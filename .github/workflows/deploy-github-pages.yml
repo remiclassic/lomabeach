@@ -1,0 +1,56 @@
+# Build and deploy the Vite app to GitHub Pages.
+# After pushing: Repository → Settings → Pages → Build and deployment → Source: GitHub Actions.
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        env:
+          # Must match the repository name for https://<user>.github.io/<repo>/
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          # Optional: add repo secret VITE_API_BASE_URL (e.g. https://your-backend.vercel.app) so Stripe checkout works.
+          VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
+          VITE_PUBLIC_SITE_URL: ${{ secrets.VITE_PUBLIC_SITE_URL }}
+        run: |
+          npm run build
+          cp dist/index.html dist/404.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
