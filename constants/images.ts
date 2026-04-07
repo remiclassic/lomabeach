@@ -2,6 +2,8 @@
  * Image sources: set `VITE_USE_LOCAL_IMAGES=true` in `.env` after adding files
  * under `public/images/` (see README for the filename map).
  */
+import { REMOTE_HERO_IMAGE_URL } from './remoteHeroUrl';
+
 const USE_LOCAL = import.meta.env.VITE_USE_LOCAL_IMAGES === 'true';
 
 /** Public folder paths work on GitHub Pages when `base` is a subpath (e.g. /lomabeach/). */
@@ -17,10 +19,7 @@ function pick(local: string, remote: string): string {
 const R = (q: string) => `https://images.unsplash.com/${q}`;
 
 export const IMG = {
-  hero: pick(
-    '/images/hero.jpg',
-    R('photo-1473186578172-c141e6798cf4?auto=format&fit=crop&q=80&w=2400'),
-  ),
+  hero: pick('/images/hero.jpg', REMOTE_HERO_IMAGE_URL),
   homePhilosophy: pick(
     '/images/home-philosophy.jpg',
     R('photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&q=80&w=1200'),

@@ -36,7 +36,8 @@ jobs:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
           # Optional: add repo secret VITE_API_BASE_URL (e.g. https://your-backend.vercel.app) so Stripe checkout works.
           VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
-          VITE_PUBLIC_SITE_URL: ${{ secrets.VITE_PUBLIC_SITE_URL }}
+          # Canonical URL for Open Graph (secret overrides default github.io URL, e.g. custom domain).
+          VITE_PUBLIC_SITE_URL: ${{ secrets.VITE_PUBLIC_SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
         run: |
           npm run build
           cp dist/index.html dist/404.html
