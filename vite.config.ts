@@ -2,7 +2,7 @@ import path from 'path';
 import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-import { REMOTE_HERO_IMAGE_URL } from './constants/remoteHeroUrl';
+import { OPEN_GRAPH_IMAGE_URL } from './constants/remoteHeroUrl';
 
 const OG_TITLE = 'LOMA Beach Resort | Koh Phangan — Nothing fancy. Everything you need.';
 const OG_DESCRIPTION =
@@ -15,10 +15,16 @@ function injectLinkPreviewMeta(env: Record<string, string>): Plugin {
       const useLocal = env.VITE_USE_LOCAL_IMAGES === 'true';
       // Full public origin + path to site root (e.g. https://user.github.io/repo) — do not append Vite `base` again.
       const site = (env.VITE_PUBLIC_SITE_URL ?? '').replace(/\/$/, '');
-      let ogImage = REMOTE_HERO_IMAGE_URL;
+      let ogImage = OPEN_GRAPH_IMAGE_URL;
       if (useLocal && site) {
         ogImage = `${site}/images/hero.jpg`;
       }
+      const ogSizeMeta =
+        useLocal && site
+          ? ''
+          : `    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+`;
       const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
       const canonical = site === '' ? '' : `${site}/`;
       const urlLine =
@@ -29,7 +35,7 @@ function injectLinkPreviewMeta(env: Record<string, string>): Plugin {
     <meta property="og:title" content="${esc(OG_TITLE)}" />
     <meta property="og:description" content="${esc(OG_DESCRIPTION)}" />
     <meta property="og:image" content="${esc(ogImage)}" />
-    <meta property="og:image:alt" content="${esc('Loma Beach Resort — Koh Phangan beachfront')}" />
+${ogSizeMeta}    <meta property="og:image:alt" content="${esc('Loma Beach Resort — Koh Phangan beachfront')}" />
 ${urlLine}    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${esc(OG_TITLE)}" />
     <meta name="twitter:description" content="${esc(OG_DESCRIPTION)}" />
