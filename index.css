@@ -8,6 +8,8 @@
   --color-deep-sea-brown: #5b4636;
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
   --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  /* Soft, low-frequency noise — reads as sandy texture, not harsh film grain */
+  --loma-sand-grain-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.28' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Base shell: prevent sideways scroll, respect safe areas, improve focus visibility */
@@ -22,6 +24,34 @@ body {
   color: var(--color-deep-sea-blue);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Sand texture: very subtle; soft-light keeps highlights airy on pale sand */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.09;
+  background-image: var(--loma-sand-grain-svg);
+  background-size: clamp(320px, 42vmin, 520px) clamp(320px, 42vmin, 520px);
+  background-repeat: repeat;
+  mix-blend-mode: soft-light;
+}
+
+/* Stack root above the decorative grain layer */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Use with Tailwind `bg-sand-tan` / `bg-sand-tan/…` so solid sand blocks still show texture */
+.loma-sand-grain {
+  background-image: var(--loma-sand-grain-svg);
+  background-size: clamp(320px, 42vmin, 520px) clamp(320px, 42vmin, 520px);
+  background-repeat: repeat;
+  background-blend-mode: soft-light;
 }
 
 /* Visually hidden but available to screen readers */

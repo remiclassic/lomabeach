@@ -479,7 +479,7 @@ export default function App() {
       </a>
       <nav className="fixed w-full z-50" aria-label="Primary">
         {/* Blur on inner bar only so the mobile panel stays viewport-fixed (backdrop-filter on an ancestor breaks that). */}
-        <div className="relative z-10 bg-sand-tan/90 backdrop-blur-md shadow-sm w-full">
+        <div className="relative z-10 bg-sand-tan/90 backdrop-blur-md shadow-sm w-full loma-sand-grain">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <button
               type="button"
@@ -531,7 +531,7 @@ export default function App() {
             role="dialog"
             aria-modal="true"
             aria-label="Site navigation"
-            className="lg:hidden fixed inset-x-0 top-[4rem] bottom-0 bg-sand-tan flex flex-col items-center justify-start pt-12 pb-10 px-4 gap-6 overflow-y-auto overscroll-contain shadow-[0_-4px_24px_rgba(44,68,82,0.08)] animate-in slide-in-from-top duration-300"
+            className="lg:hidden fixed inset-x-0 top-[4rem] bottom-0 bg-sand-tan loma-sand-grain flex flex-col items-center justify-start pt-12 pb-10 px-4 gap-6 overflow-y-auto overscroll-contain shadow-[0_-4px_24px_rgba(44,68,82,0.08)] animate-in slide-in-from-top duration-300"
           >
             <NavLink page="home" label="Home" activePage={activePage} onNavigate={navigate} layout="stack" />
             <NavLink page="rooms" label="Rooms" activePage={activePage} onNavigate={navigate} layout="stack" />
@@ -893,7 +893,7 @@ function RoomModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="room-modal-title"
-        className="relative bg-sand-tan w-full max-w-5xl rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col lg:flex-row max-h-[min(90dvh,90vh)] z-[1]"
+        className="relative bg-sand-tan loma-sand-grain w-full max-w-5xl rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col lg:flex-row max-h-[min(90dvh,90vh)] z-[1]"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 id="room-modal-title" className="sr-only">
@@ -970,7 +970,7 @@ function RoomModal({
               onClick={() => onBook(room)}
               disabled={isSoldOut}
               className={`w-full py-5 min-h-[3.25rem] rounded-full font-bold text-xl transition-all transform hover:scale-[1.02] shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-deep-sea-blue focus-visible:ring-offset-2 ${
-                isSoldOut ? 'bg-sand-tan text-deep-sea-blue/30 cursor-not-allowed' : 'bg-sunset-pink text-white hover:bg-deep-sea-blue'
+                isSoldOut ? 'bg-sand-tan loma-sand-grain text-deep-sea-blue/30 cursor-not-allowed' : 'bg-sunset-pink text-white hover:bg-deep-sea-blue'
               }`}
             >
               {isSoldOut ? 'Sold Out' : 'Book This Room'}
@@ -1134,7 +1134,7 @@ const HomePage = memo(function HomePage({
             loading="lazy"
             decoding="async"
           />
-          <div className="absolute -bottom-8 -right-8 bg-sand-tan p-6 rounded-xl shadow-lg z-20 hidden lg:block border border-deep-sea-blue/5">
+          <div className="absolute -bottom-8 -right-8 bg-sand-tan loma-sand-grain p-6 rounded-xl shadow-lg z-20 hidden lg:block border border-deep-sea-blue/5">
             <p className="font-serif text-deep-sea-blue italic text-lg leading-tight">
               &quot;The most relaxed I&apos;ve
               <br />
@@ -1287,7 +1287,7 @@ const HomePage = memo(function HomePage({
         </div>
       </section>
 
-      <section className="relative z-[1] py-20 sm:py-24 md:py-32 px-4 sm:px-6 text-center bg-sand-tan overflow-hidden">
+      <section className="relative z-[1] py-20 sm:py-24 md:py-32 px-4 sm:px-6 text-center bg-sand-tan loma-sand-grain overflow-hidden">
         <div
           className="pointer-events-none absolute -right-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-sunset-pink/15 blur-3xl"
           aria-hidden
@@ -1372,7 +1372,7 @@ const FeaturedRoomCard = memo(function FeaturedRoomCard({
             onClick={handleBook}
             disabled={isSoldOut}
             className={`w-full py-4 min-h-12 rounded-full font-bold text-sm shadow-md transition-all transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset-pink ${
-              isSoldOut ? 'bg-sand-tan text-deep-sea-blue/30 cursor-not-allowed' : 'bg-sunset-pink text-white hover:bg-deep-sea-blue shadow-sunset-pink/20'
+              isSoldOut ? 'bg-sand-tan loma-sand-grain text-deep-sea-blue/30 cursor-not-allowed' : 'bg-sunset-pink text-white hover:bg-deep-sea-blue shadow-sunset-pink/20'
             }`}
           >
             {isSoldOut ? 'Sold Out' : 'Book This Room'}
@@ -2079,7 +2079,7 @@ function LocationPage({ onBook, onContact }: { onBook: () => void; onContact: ()
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
           <div className="space-y-6 order-2 lg:order-1">
-            <div className="p-6 sm:p-8 bg-sand-tan rounded-3xl border-2 border-poolside-aqua/30 shadow-sm">
+            <div className="p-6 sm:p-8 bg-sand-tan loma-sand-grain rounded-3xl border-2 border-poolside-aqua/30 shadow-sm">
               <h2 className="text-xl sm:text-2xl font-serif mb-4 flex items-center gap-2 italic text-deep-sea-blue">
                 <Navigation className="text-sunset-pink shrink-0" aria-hidden />
                 How to find us

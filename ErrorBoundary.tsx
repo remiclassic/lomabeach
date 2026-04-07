@@ -21,7 +21,7 @@ export class ErrorBoundary extends Component<Props, State> {
     if (this.state.error) {
       return (
         <div
-          className="min-h-dvh flex flex-col items-center justify-center px-6 py-10 font-sans bg-sand-tan text-deep-sea-blue text-center"
+          className="min-h-dvh flex flex-col items-center justify-center px-6 py-10 font-sans bg-sand-tan loma-sand-grain text-deep-sea-blue text-center"
           role="alert"
         >
           <h1 className="font-serif text-2xl md:text-3xl italic mb-4 text-deep-sea-blue">Something went wrong</h1>
