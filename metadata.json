@@ -1,0 +1,7 @@
+{
+  "name": "LOMA Beach Resort",
+  "description": "A relaxed tropical beachfront property with a sun-washed, playful, and nostalgic brand ethos. Life's a beach, no work allowed.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
