@@ -22,7 +22,7 @@ export const IMG = {
   hero: pick('/images/hero.jpg', REMOTE_HERO_IMAGE_URL),
   homePhilosophy: pick(
     '/images/home-philosophy.jpg',
-    R('photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&q=80&w=1200'),
+    R('photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=1200'),
   ),
   homeExpPool: pick(
     '/images/home-experience-pool.jpg',
@@ -34,7 +34,7 @@ export const IMG = {
   ),
   homeExpSunset: pick(
     '/images/home-experience-sunset.jpg',
-    R('photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200'),
+    R('photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200'),
   ),
   gallery: [
     pick('/images/gallery-01.jpg', R('photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800')),
@@ -82,7 +82,7 @@ export const IMG = {
   ),
   roomBeachfrontFamily: pick(
     '/images/room-beachfront-family-main.jpg',
-    R('photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=1200'),
+    R('photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=1200'),
   ),
   roomBeachfrontFamilyG2: pick(
     '/images/room-beachfront-family-2.jpg',

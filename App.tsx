@@ -37,10 +37,9 @@ import {
   Wifi,
   Camera,
   Plane,
-  Ship,
   CarTaxiFront,
   Clock,
-  Receipt,
+  Bike,
 } from 'lucide-react';
 
 function formatMajorAmount(amount: number): string {
@@ -52,7 +51,8 @@ const ROOMS: Room[] = [
   {
     id: 'beachfront-double',
     name: 'Beachfront Double',
-    description: 'A sun-drenched sanctuary right on the sand. Perfect for couples who want to roll out of bed and into the surf. Features high ceilings and a private balcony overlooking the Gulf. Only two of these exclusive units exist.',
+    description:
+      'Wake up to the Gulf. AC, private bathroom, sea view balcony, and a dining area if you want breakfast in. Clean, modern, quiet.',
     price: NIGHTLY_RATE_MAJOR['beachfront-double'],
     maxGuests: ROOM_MAX_GUESTS['beachfront-double'],
     size: '35 m²',
@@ -70,7 +70,8 @@ const ROOMS: Room[] = [
   {
     id: 'beachfront-family',
     name: 'Beachfront Family Suite',
-    description: 'Our most exclusive flagship offering. This singular suite provides expansive sea views and direct beach access for the whole family. Features separate sleeping quarters and a large terrace for sunset dinners.',
+    description:
+      'Our biggest room. Sea views, separate terrace, dining area. Built for families who want space without the chaos of a big resort. AC, hot water, the works.',
     price: NIGHTLY_RATE_MAJOR['beachfront-family'],
     maxGuests: ROOM_MAX_GUESTS['beachfront-family'],
     size: '75 m²',
@@ -89,7 +90,8 @@ const ROOMS: Room[] = [
   {
     id: 'triple-garden',
     name: 'Triple Garden Retreat',
-    description: 'Tucked away in our lush tropical gardens, these six retreats offer a quiet, cool escape for a small group. Features a lovely terrace perfect for morning coffee while listening to the jungle birds.',
+    description:
+      'Set back in the tropical garden. Still beachfront property, just cooler and quieter. Perfect for small groups or families. Balcony, AC, sea breeze without the direct sun.',
     price: NIGHTLY_RATE_MAJOR['triple-garden'],
     maxGuests: ROOM_MAX_GUESTS['triple-garden'],
     size: '40 m²',
@@ -264,18 +266,18 @@ const GALLERY_MOOD_FILTERS = [
 ] as const;
 
 const LOCATION_SPOTLIGHT = [
-  { label: 'Haad Rin', caption: 'Koh Phangan, Thailand', Icon: MapPin },
-  { label: 'Best of both', caption: 'Near the scene, off the buzz', Icon: Navigation },
-  { label: 'Island rhythm', caption: 'Beach, green hills, slow evenings', Icon: Waves },
+  { label: 'Nakhon Si Thammarat', caption: 'Gulf of Thailand', Icon: MapPin },
+  { label: 'Quiet coast', caption: 'A stretch most travelers miss', Icon: Navigation },
+  { label: 'Twenty rooms', caption: 'Pool, restaurant, space to breathe', Icon: Waves },
 ] as const;
 
 const LOCATION_GETTING_HERE = [
-  { label: 'Fly in', caption: 'Ko Samui (USM) is the nearest hub', Icon: Plane },
-  { label: 'Ferry across', caption: 'Regular boats to Phangan', Icon: Ship },
-  { label: 'Last leg', caption: 'Taxi or songthaew to Haad Rin', Icon: CarTaxiFront },
+  { label: 'Fly in', caption: 'Nakhon Si Thammarat Airport (NST), or connect via Bangkok', Icon: Plane },
+  { label: 'Road transfer', caption: 'Taxi or hire car to the coast', Icon: CarTaxiFront },
+  { label: 'Arrive', caption: 'Pull up to Loma Beach Resort', Icon: MapPin },
 ] as const;
 
-const LOCATION_ADDRESS_LINE = 'Loma Beach Resort, Haad Rin, Koh Phangan, Surat Thani, Thailand';
+const LOCATION_ADDRESS_LINE = 'Loma Beach Resort, Nakhon Si Thammarat, Thailand';
 
 const CONTACT_PHONE_HREF = 'tel:+66881234567';
 const CONTACT_PHONE_DISPLAY = '+66 88 123 4567';
@@ -287,16 +289,10 @@ const CONTACT_REPLY_STRIP = [
   { label: 'No junk mail', caption: "We won't spam your inbox", Icon: ShieldCheck },
 ] as const;
 
-const HOME_PROMISE_STRIP = [
-  { label: 'No rush', caption: 'Arrive on island time', Icon: Clock },
-  { label: 'Salt & shade', caption: 'The Gulf sets the rhythm', Icon: Waves },
-  { label: 'Small & cared for', caption: 'Hands-on hosting, always', Icon: Sparkles },
-] as const;
-
 const BOOKING_TRUST_STRIP = [
-  { label: 'Stripe secure', caption: 'Cards handled on Stripe — not stored here', Icon: ShieldCheck },
-  { label: 'Price in plain sight', caption: 'Nights × rate before you commit', Icon: Receipt },
-  { label: 'Email receipt', caption: "We'll confirm the finer details", Icon: Mail },
+  { label: 'Secure checkout', caption: 'Stripe when you pay', Icon: ShieldCheck },
+  { label: 'Human replies', caption: 'No chatbots, we promise', Icon: MessageCircle },
+  { label: 'Local family friendly staff', caption: 'Nakhon Si Thammarat locals', Icon: Sparkles },
 ] as const;
 
 const BOOKING_STEPS = [
@@ -317,8 +313,8 @@ const FOOTER_EXPLORE_LINKS = [
 
 const FOOTER_TRUST_ROW = [
   { label: 'Secure checkout', caption: 'Stripe when you pay', Icon: ShieldCheck },
-  { label: 'Human replies', caption: 'No chatbots — promise', Icon: MessageCircle },
-  { label: 'Island time', caption: 'Haad Rin, Koh Phangan', Icon: MapPin },
+  { label: 'Human replies', caption: 'No chatbots, we promise', Icon: MessageCircle },
+  { label: 'Local family friendly staff', caption: 'Nakhon Si Thammarat locals', Icon: Sparkles },
 ] as const;
 
 const FOOTER_LINK_CLASS =
@@ -485,7 +481,7 @@ export default function App() {
               type="button"
               onClick={goHome}
               className="flex items-center justify-start text-left rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset-pink focus-visible:ring-offset-2 focus-visible:ring-offset-sand-tan min-h-11"
-              aria-label="Loma Beach Resort — Home"
+              aria-label="Loma Beach Resort, Home"
             >
               <div className="inline-flex flex-col items-start text-left border-l-2 border-sunset-pink/50 pl-4">
                 <span className="font-serif text-4xl tracking-tighter text-deep-sea-blue leading-none text-left">
@@ -620,7 +616,7 @@ export default function App() {
                 </span>
               </div>
               <p className="text-sand-tan/70 font-light leading-relaxed max-w-sm text-sm sm:text-base">
-                Where days slow down and the Gulf sets the pace. Come exhale — we&apos;ll keep the sunscreen stocked.
+                Where days slow down and the Gulf sets the pace. Come exhale. We&apos;ll keep the sunscreen stocked.
               </p>
               <div className="flex flex-wrap items-center gap-2" aria-label="Social links">
                 <a
@@ -685,7 +681,7 @@ export default function App() {
               <ul className="space-y-4 text-sm text-sand-tan/75 font-light">
                 <li className="flex items-start gap-3">
                   <MapPin size={18} className="flex-shrink-0 mt-0.5 text-sunset-pink/80" aria-hidden />
-                  <span className="leading-relaxed">Haad Rin, Koh Phangan, Thailand</span>
+                  <span className="leading-relaxed">Nakhon Si Thammarat, Thailand</span>
                 </li>
                 <li className="flex items-center gap-3 min-w-0">
                   <Phone size={18} className="flex-shrink-0 text-sunset-pink/80" aria-hidden />
@@ -722,9 +718,9 @@ export default function App() {
             <div className="lg:col-span-2 flex flex-col gap-6">
               <div className="rounded-2xl border border-sand-tan/15 bg-sand-tan/5 p-5 sm:p-6 flex-1">
                 <p className="font-serif text-lg sm:text-xl italic text-sand-tan leading-snug">
-                  &quot;Mentally I&apos;m at Loma Beach.&quot;
+                  &quot;Life&apos;s a Beach&quot;
                 </p>
-                <p className="text-xs uppercase tracking-widest text-sand-tan/45 font-bold mt-3">— A return guest</p>
+                <p className="text-xs uppercase tracking-widest text-sand-tan/65 font-bold mt-3">LOMA BEACH RESORT</p>
               </div>
               <button
                 type="button"
@@ -745,7 +741,7 @@ export default function App() {
 
           <div className="mt-12 sm:mt-16 pt-8 border-t border-sand-tan/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <p className="text-xs text-sand-tan/45 uppercase tracking-widest max-w-xl leading-relaxed">
-              © 2026 Loma Beach Resort · Life&apos;s a beach · No work allowed
+              © 2026 Loma Beach Resort · Life&apos;s a Beach · LOMA BEACH RESORT
             </p>
             <button
               type="button"
@@ -1033,16 +1029,16 @@ const HomePage = memo(function HomePage({
         <div className="relative z-10 text-white space-y-4 sm:space-y-6 max-w-4xl mx-auto w-full break-words [&_h1]:[text-shadow:0_2px_36px_rgba(44,68,82,0.22)] [&_p]:[text-shadow:0_1px_28px_rgba(44,68,82,0.18)]">
           <p className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] backdrop-blur-sm">
             <MapPin size={14} className="opacity-90 shrink-0" aria-hidden />
-            Haad Rin · Koh Phangan
+            Nakhon Si Thammarat, Thailand
           </p>
           <h1 className="font-serif text-5xl sm:text-7xl md:text-[9rem] mb-2 drop-shadow-[0_16px_42px_rgba(44,68,82,0.15)] italic leading-[1.05] sm:leading-tight">
             Loma Beach
           </h1>
           <p className="text-base sm:text-lg md:text-2xl font-light tracking-wide mb-3 sm:mb-4 opacity-95 max-w-2xl mx-auto leading-relaxed px-1">
-            You&apos;ve earned the slow life. Come do nothing—we&apos;ll handle the rest.
+            You&apos;ve earned the slow life. Come do nothing. We&apos;ll handle the rest.
           </p>
           <p className="text-xs sm:text-sm md:text-lg font-light tracking-[0.2em] sm:tracking-[0.35em] uppercase mb-8 sm:mb-10 opacity-90 px-1">
-            Relax. Swim. Eat. Nap. Repeat.
+            RELAX. SWIM. EAT. NAP. REPEAT.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-stretch sm:items-center max-w-md sm:max-w-none mx-auto w-full">
             <button
@@ -1091,33 +1087,6 @@ const HomePage = memo(function HomePage({
         </div>
       </section>
 
-      <section className="relative z-[1] py-12 sm:py-14 md:py-16 px-4 sm:px-6 max-w-7xl mx-auto">
-        <div
-          className="rounded-2xl border border-deep-sea-blue/10 bg-white/70 backdrop-blur-md px-4 py-6 sm:px-8 sm:py-8 shadow-sm"
-          aria-label="What stays the same when you arrive"
-        >
-          <p className="text-center text-[10px] sm:text-xs font-bold uppercase tracking-[0.35em] text-deep-sea-blue/60 mb-6">
-            The Loma pace
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-            {HOME_PROMISE_STRIP.map(({ label, caption, Icon }) => (
-              <div
-                key={label}
-                className="flex flex-col items-center text-center gap-3 rounded-xl bg-sand-tan/45 px-3 py-4 sm:py-5 border border-deep-sea-blue/5"
-              >
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-deep-sea-blue shadow-sm ring-1 ring-deep-sea-blue/5">
-                  <Icon size={22} strokeWidth={1.75} aria-hidden />
-                </div>
-                <div className="space-y-0.5">
-                  <p className="text-xs font-bold uppercase tracking-widest text-deep-sea-blue">{label}</p>
-                  <p className="text-xs text-deep-sea-brown/75 font-light">{caption}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="relative z-[1] py-16 sm:py-20 md:py-24 px-4 sm:px-6 max-w-7xl mx-auto">
         <div
           className="pointer-events-none hidden md:block absolute left-[8%] top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-poolside-aqua/15 blur-3xl z-0"
@@ -1129,19 +1098,11 @@ const HomePage = memo(function HomePage({
           <img
             src={IMG.homePhilosophy}
             className="rounded-2xl shadow-xl relative z-10 w-full h-auto ring-1 ring-deep-sea-blue/5"
-            alt="Thailand beach with longtail boats"
+            alt="Gulf of Thailand coastline at Loma Beach Resort"
             sizes="(max-width: 768px) 100vw, 50vw"
             loading="lazy"
             decoding="async"
           />
-          <div className="absolute -bottom-8 -right-8 bg-sand-tan loma-sand-grain p-6 rounded-xl shadow-lg z-20 hidden lg:block border border-deep-sea-blue/5">
-            <p className="font-serif text-deep-sea-blue italic text-lg leading-tight">
-              &quot;The most relaxed I&apos;ve
-              <br />
-              been in a decade.&quot;
-            </p>
-            <span className="text-xs uppercase tracking-widest text-deep-sea-brown mt-2 block font-bold">— Sarah J.</span>
-          </div>
         </div>
         <div className="space-y-8 relative z-[1]">
           <div className="space-y-2">
@@ -1151,10 +1112,11 @@ const HomePage = memo(function HomePage({
             </h2>
           </div>
           <p className="text-lg text-deep-sea-brown leading-relaxed font-light">
-            The owner built this place after a lifetime of hard work—somewhere to finally exhale. Loma is for guests who want the same:
-            no agenda, no performance, just the ocean setting the pace. Pure Southern Thai serenity.
+            Warren built this place as a quiet escape on a stretch of coast most people miss. Twenty rooms, a pool, a
+            restaurant, and a beach that stays empty even in high season. Loma is for people tired of the crowds. No
+            itinerary, no performance. Just the Gulf of Thailand and whatever pace feels right.
           </p>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="flex items-center gap-3 text-deep-sea-blue">
               <div className="p-2 bg-poolside-aqua/20 rounded-lg">
                 <Waves size={20} aria-hidden />
@@ -1166,6 +1128,12 @@ const HomePage = memo(function HomePage({
                 <Wind size={20} aria-hidden />
               </div>
               <span className="text-sm font-bold uppercase tracking-wide">Pool & Bar</span>
+            </div>
+            <div className="flex items-center gap-3 text-deep-sea-blue">
+              <div className="p-2 bg-poolside-aqua/20 rounded-lg">
+                <Bike size={20} aria-hidden />
+              </div>
+              <span className="text-sm font-bold uppercase tracking-wide">Scooter hire</span>
             </div>
           </div>
           <button
@@ -1186,13 +1154,13 @@ const HomePage = memo(function HomePage({
             <div className="space-y-4">
               <span className="text-sunset-pink uppercase tracking-[0.3em] font-bold text-xs">Stay with us</span>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-deep-sea-blue italic text-balance">
-                Pick Your Sanctuary
+                Pick Your Room
               </h2>
               <p className="text-base sm:text-lg text-deep-sea-brown/70 font-light italic max-w-prose">
                 Where will you do absolutely nothing today?
               </p>
               <p className="text-sm text-deep-sea-brown/65 font-light max-w-md">
-                {ROOMS.length} hideaways on property — here are three to start dreaming in.
+                We have 20 rooms. Here are three to start with.
               </p>
             </div>
             <button
@@ -1239,7 +1207,7 @@ const HomePage = memo(function HomePage({
               <div className="absolute inset-0 bg-gradient-to-t from-deep-sea-blue/90 via-deep-sea-blue/25 to-transparent flex flex-col justify-end p-6 sm:p-8 md:p-10 text-left">
                 <h3 className="text-2xl sm:text-3xl font-serif italic">Pool & Drinks</h3>
                 <p className="mt-2 text-sm text-white/85 font-light leading-relaxed max-w-xs">
-                  Cool water, warm light — stay until the bar cart finds you.
+                  Cool water, warm light. Stay until the sun sets and beyond.
                 </p>
               </div>
             </div>
@@ -1247,14 +1215,14 @@ const HomePage = memo(function HomePage({
               <img
                 src={IMG.homeExpHammock}
                 className="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-1000 motion-safe:group-hover:scale-110"
-                alt="Hammock in the shade"
+                alt="Pagoda and hammocks in the shade"
                 loading="lazy"
                 decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-deep-sea-blue/90 via-deep-sea-blue/25 to-transparent flex flex-col justify-end p-6 sm:p-8 md:p-10 text-left">
                 <h3 className="text-2xl sm:text-3xl font-serif italic">Lazy Afternoons</h3>
                 <p className="mt-2 text-sm text-white/85 font-light leading-relaxed max-w-xs">
-                  One hammock, zero agenda — the official island uniform.
+                  Pagoda, hammocks, shade. Relax, you&apos;re at Loma.
                 </p>
               </div>
             </div>
@@ -1262,14 +1230,14 @@ const HomePage = memo(function HomePage({
               <img
                 src={IMG.homeExpSunset}
                 className="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-1000 motion-safe:group-hover:scale-110"
-                alt="Beach at sunset"
+                alt="Sunrise over the Gulf of Thailand"
                 loading="lazy"
                 decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-deep-sea-blue/75 via-deep-sea-blue/20 to-transparent flex flex-col justify-end p-6 sm:p-8 md:p-10 text-left">
-                <h3 className="text-2xl sm:text-3xl font-serif italic">Sunset Views</h3>
+                <h3 className="text-2xl sm:text-3xl font-serif italic">Sunrise Views</h3>
                 <p className="mt-2 text-sm text-white/85 font-light leading-relaxed max-w-xs">
-                  Gold on the water — the day&apos;s gentle last act.
+                  Sunrise over the ocean for breakfast (or sleep in late as you like).
                 </p>
               </div>
             </div>
@@ -1981,7 +1949,7 @@ function GalleryPage({ onBook, onViewRooms }: { onBook: () => void; onViewRooms:
 
 function LocationPage({ onBook, onContact }: { onBook: () => void; onContact: () => void }) {
   const mapsUrl =
-    'https://www.google.com/maps/search/?api=1&query=Haad+Rin+Koh+Phangan+Thailand';
+    'https://www.google.com/maps/search/?api=1&query=Loma+Beach+Resort+Nakhon+Si+Thammarat+Thailand';
   const [addressCopied, setAddressCopied] = useState(false);
 
   const copyAddress = useCallback(async () => {
@@ -2015,11 +1983,10 @@ function LocationPage({ onBook, onContact }: { onBook: () => void; onContact: ()
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif text-deep-sea-blue italic text-balance leading-[1.05]">
             Location
           </h1>
-          <p className="text-lg sm:text-xl italic text-deep-sea-brown/75">Haad Rin, Koh Phangan, Thailand</p>
+          <p className="text-lg sm:text-xl italic text-deep-sea-brown/75">Nakhon Si Thammarat, Thailand</p>
           <p className="text-base sm:text-lg text-deep-sea-brown/80 font-light leading-relaxed">
-            Tucked on the quieter side of Haad Rin — close enough for dinner and a wander, far enough that the sea
-            still feels like yours. Use the map pin, copy our address for drivers, or message us if you&apos;re
-            unsure on arrival day.
+            Quiet Gulf coast in Nakhon Si Thammarat: twenty rooms, a pool, and a restaurant on a stretch many travelers
+            miss. Use the map pin, copy our address for drivers, or message us if arrival day still feels unclear.
           </p>
         </header>
 
@@ -2028,7 +1995,7 @@ function LocationPage({ onBook, onContact }: { onBook: () => void; onContact: ()
           className="rounded-2xl border border-deep-sea-blue/10 bg-white/65 backdrop-blur-md px-4 py-6 sm:px-8 sm:py-8 shadow-sm"
         >
           <p className="text-center text-[10px] sm:text-xs font-bold uppercase tracking-[0.35em] text-deep-sea-blue/60 mb-6">
-            Why this corner of the island
+            Why this stretch of coast
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
             {LOCATION_SPOTLIGHT.map(({ label, caption, Icon }) => (
@@ -2057,7 +2024,7 @@ function LocationPage({ onBook, onContact }: { onBook: () => void; onContact: ()
             A typical journey
           </p>
           <p className="text-center text-sm text-deep-sea-brown/75 font-light mb-6 max-w-xl mx-auto">
-            Most guests connect through Samui, then hop a boat — we&apos;re happy to help you coordinate pickups.
+            Most guests fly into NST or connect through Bangkok. We&apos;re happy to help you coordinate transfers.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
             {LOCATION_GETTING_HERE.map(({ label, caption, Icon }) => (
@@ -2085,8 +2052,8 @@ function LocationPage({ onBook, onContact }: { onBook: () => void; onContact: ()
                 How to find us
               </h2>
               <p className="text-deep-sea-blue font-light leading-relaxed mb-6">
-                We&apos;re at the calmer end of Haad Rin — just far enough from the busy strip that nights feel soft,
-                but still easy to join the energy when you want it.
+                We&apos;re on a calm Gulf beach: twenty rooms, a pool, and a restaurant. The sand stays quiet, and the
+                evenings stay soft.
               </p>
               <ul className="space-y-3 text-sm text-deep-sea-brown/85 font-light mb-6">
                 <li className="flex gap-3">
@@ -2095,11 +2062,11 @@ function LocationPage({ onBook, onContact }: { onBook: () => void; onContact: ()
                 </li>
                 <li className="flex gap-3">
                   <CheckCircle2 className="text-poolside-aqua flex-shrink-0 mt-0.5" size={18} aria-hidden />
-                  <span>Google Maps opens best for on-island navigation and pin drops.</span>
+                  <span>Google Maps works well for the final miles along the coast.</span>
                 </li>
                 <li className="flex gap-3">
                   <CheckCircle2 className="text-poolside-aqua flex-shrink-0 mt-0.5" size={18} aria-hidden />
-                  <span>Arriving late? Message us — we&apos;ll leave check-in notes.</span>
+                  <span>Arriving late? Message us. We&apos;ll leave check-in notes.</span>
                 </li>
               </ul>
               <div className="rounded-2xl bg-white/70 border border-deep-sea-blue/10 p-4 sm:p-5 space-y-3">
@@ -2138,7 +2105,7 @@ function LocationPage({ onBook, onContact }: { onBook: () => void; onContact: ()
               <img
                 src={IMG.locationMap}
                 className="h-full w-full object-cover transition-transform duration-[1.2s] motion-safe:lg:group-hover:scale-[1.03]"
-                alt="Aerial coastal view near Haad Rin, Koh Phangan — location context"
+                alt="Coastal Gulf of Thailand near Nakhon Si Thammarat, location context"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 loading="lazy"
                 decoding="async"
@@ -2152,7 +2119,7 @@ function LocationPage({ onBook, onContact }: { onBook: () => void; onContact: ()
               </div>
             </div>
             <p className="text-center lg:text-right text-xs text-deep-sea-brown/55 font-light italic px-2">
-              Illustrative view — open Maps for live directions to Haad Rin.
+              Illustrative view. Open Maps for live directions to Loma Beach Resort.
             </p>
           </div>
         </div>
@@ -2166,7 +2133,7 @@ function LocationPage({ onBook, onContact }: { onBook: () => void; onContact: ()
             Bags almost packed?
           </p>
           <h2 className="relative z-[1] mt-3 font-serif text-2xl sm:text-3xl md:text-4xl italic leading-tight text-balance max-w-2xl mx-auto">
-            Book the easy part — we&apos;ll save your dates.
+            Book the easy part. We&apos;ll save your dates.
           </h2>
           <button
             type="button"
@@ -2718,7 +2685,7 @@ function BookingPage({
             <div className="space-y-8">
               <div className="space-y-2">
                 <label htmlFor="booking-room" className="text-xs uppercase tracking-widest font-bold text-deep-sea-brown/55">
-                  Select Sanctuary
+                  Select room
                 </label>
                 <BookingRoomSelect
                   id="booking-room"
@@ -2727,7 +2694,7 @@ function BookingPage({
                   onChange={(roomId) => setBookingData((p) => ({ ...p, roomId }))}
                   emptyLabel="Select a room…"
                   formatRoomLabel={(r) =>
-                    `${r.name} — ${formatMajorAmount(r.price)}/night${r.availability === 'few-left' ? ' · Limited' : ''}`
+                    `${r.name} · ${formatMajorAmount(r.price)}/night${r.availability === 'few-left' ? ' · Limited' : ''}`
                   }
                 />
               </div>

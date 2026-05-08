@@ -93,7 +93,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           price_data: {
             currency,
             product_data: {
-              name: `${roomName} — Loma Beach Resort`,
+              name: `${roomName}, Loma Beach Resort`,
               description: `${nights} night(s) · ${guests} guest(s) · Check-in ${checkIn} · Check-out ${checkOut}`,
             },
             unit_amount: unitAmount,

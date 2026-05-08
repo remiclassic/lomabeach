@@ -4,9 +4,9 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { OPEN_GRAPH_IMAGE_URL } from './constants/remoteHeroUrl';
 
-const OG_TITLE = 'LOMA Beach Resort | Koh Phangan — Nothing fancy. Everything you need.';
+const OG_TITLE = 'LOMA Beach Resort | Nakhon Si Thammarat. Nothing fancy. Everything you need.';
 const OG_DESCRIPTION =
-  "Loma Beach Resort on Koh Phangan, Thailand: you've done enough—come do nothing. Simple beachfront stays. Secure booking with Stripe.";
+  "Loma Beach Resort in Nakhon Si Thammarat, Thailand: you've earned the slow life. Come do nothing. We'll handle the rest. Secure booking with Stripe.";
 
 function injectLinkPreviewMeta(env: Record<string, string>): Plugin {
   return {
@@ -35,7 +35,7 @@ function injectLinkPreviewMeta(env: Record<string, string>): Plugin {
     <meta property="og:title" content="${esc(OG_TITLE)}" />
     <meta property="og:description" content="${esc(OG_DESCRIPTION)}" />
     <meta property="og:image" content="${esc(ogImage)}" />
-${ogSizeMeta}    <meta property="og:image:alt" content="${esc('Loma Beach Resort — Koh Phangan beachfront')}" />
+${ogSizeMeta}    <meta property="og:image:alt" content="${esc('Loma Beach Resort, Nakhon Si Thammarat beachfront')}" />
 ${urlLine}    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${esc(OG_TITLE)}" />
     <meta name="twitter:description" content="${esc(OG_DESCRIPTION)}" />
